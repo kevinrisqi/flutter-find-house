@@ -6,6 +6,9 @@ Color whiteColor = Color(0xffFFFFFF);
 Color blackColor = Color(0xff000000);
 Color orangeColor = Color(0xffFF9376);
 Color greyColor = Color(0xff82868E);
+Color secondaryGreyColor = Color(0xffF6F7F8);
+
+double defaultMargin = 24.0;
 
 TextStyle blackTextStyle = GoogleFonts.poppins(
   fontWeight: FontWeight.w500,
@@ -25,4 +28,9 @@ TextStyle greyTextStyle = GoogleFonts.poppins(
 TextStyle purpleTextStyle = GoogleFonts.poppins(
   fontWeight: FontWeight.w500,
   color: purpleColor,
+);
+
+TextStyle regularTextStyle = GoogleFonts.poppins(
+  fontWeight: FontWeight.w400,
+  color: blackColor,
 );
