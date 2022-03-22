@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_find_house/themes.dart';
 import 'package:flutter_find_house/widgets/facility_item.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({Key? key}) : super(key: key);
+
+  launchUrl(String url) async {
+    if (await canLaunch(url)) {
+      launch(url);
+    } else {
+      throw (url);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -232,7 +241,9 @@ class DetailPage extends StatelessWidget {
                               ],
                             ),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                launchUrl('https://bit.ly/3Jz2vnt');
+                              },
                               child: Container(
                                 width: 40,
                                 height: 40,
@@ -260,7 +271,9 @@ class DetailPage extends StatelessWidget {
                               ),
                               primary: purpleColor,
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              launchUrl('tel:+6287777063035');
+                            },
                             child: Center(
                               child: Text(
                                 'Book Now',
