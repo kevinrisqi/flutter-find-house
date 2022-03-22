@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_find_house/pages/error_page.dart';
 import 'package:flutter_find_house/themes.dart';
 import 'package:flutter_find_house/widgets/facility_item.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({Key? key}) : super(key: key);
-
-  launchUrl(String url) async {
-    if (await canLaunch(url)) {
-      launch(url);
-    } else {
-      throw (url);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
+    launchUrl(String url) async {
+      if (await canLaunch(url)) {
+        launch(url);
+      } else {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ErrorPage(),
+          ),
+        );
+      }
+    }
+
     return Scaffold(
       backgroundColor: whiteColor,
       body: SafeArea(
@@ -242,7 +247,8 @@ class DetailPage extends StatelessWidget {
                             ),
                             InkWell(
                               onTap: () {
-                                launchUrl('https://bit.ly/3Jz2vnt');
+                                // launchUrl('https://bit.ly/3Jz2vnt');
+                                launchUrl('sdafdasf');
                               },
                               child: Container(
                                 width: 40,
