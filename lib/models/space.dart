@@ -1,18 +1,18 @@
 class Space {
-  int id;
-  String name;
-  int price;
-  int rating;
-  String city;
-  String country;
-  String imageUrl;
-  String address;
-  String phone;
-  String mapUrl;
-  List photos;
-  int numberOfKitchens;
-  int numberOfBedrooms;
-  int numberOfCupboards;
+  late int id;
+  late String name;
+  late int price;
+  late int rating;
+  late String city;
+  late String country;
+  late String imageUrl;
+  late String address;
+  late String phone;
+  late String mapUrl;
+  // late List photos;
+  late int numberOfKitchens;
+  late int numberOfBedrooms;
+  late int numberOfCupboards;
 
   Space({
     required this.id,
@@ -25,7 +25,7 @@ class Space {
     required this.address,
     required this.phone,
     required this.mapUrl,
-    required this.photos,
+    // required this.photos,
     required this.numberOfKitchens,
     required this.numberOfBedrooms,
     required this.numberOfCupboards

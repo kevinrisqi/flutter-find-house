@@ -2,17 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_find_house/models/city.dart';
 import 'package:flutter_find_house/models/space.dart';
 import 'package:flutter_find_house/models/tips.dart';
+import 'package:flutter_find_house/providers/space_provider.dart';
 import 'package:flutter_find_house/themes.dart';
 import 'package:flutter_find_house/widgets/bottom_navbar.dart';
 import 'package:flutter_find_house/widgets/city_card.dart';
 import 'package:flutter_find_house/widgets/space_card.dart';
 import 'package:flutter_find_house/widgets/tips_card.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var spaceProvider = Provider.of<SpaceProvider>(context);
+
     return Scaffold(
       backgroundColor: whiteColor,
       body: SafeArea(
@@ -23,7 +27,9 @@ class HomePage extends StatelessWidget {
           child: ListView(
             children: [
               // NOTE: Header
-              SizedBox(height: defaultMargin,),
+              SizedBox(
+                height: defaultMargin,
+              ),
               Text(
                 'Explore Now',
                 style: blackTextStyle.copyWith(
@@ -102,49 +108,24 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 16,
               ),
-              Column(
-                children: [
-                  SpaceCard(
-                    space: Space(
-                      id: 1,
-                      name: 'Kuretakaso Hott',
-                      price: 52,
-                      rating: 4,
-                      city: 'Bandung',
-                      country: 'Indonesia',
-                      imageUrl: 'assets/image_space1.png',
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  SpaceCard(
-                    space: Space(
-                      id: 2,
-                      name: 'Roemah Nenek',
-                      price: 11,
-                      rating: 5,
-                      city: 'Bogor',
-                      country: 'Indonesia',
-                      imageUrl: 'assets/image_space2.png',
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  SpaceCard(
-                    space: Space(
-                      id: 3,
-                      name: 'Darling How',
-                      price: 20,
-                      rating: 5,
-                      city: 'Jakart',
-                      country: 'Indonesia',
-                      imageUrl: 'assets/image_space3.png',
-                    ),
-                  ),
-                ],
+              FutureBuilder(
+                future: spaceProvider.getRecommendedSpaces(),
+                builder: (context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasData) {
+                    List<Space> data = snapshot.data;
+
+                    return Column(
+                      children:
+                          data.map((item) => SpaceCard(space: item)).toList(),
+                    );
+                  } else {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
               ),
+
               SizedBox(
                 height: 30,
               ),
