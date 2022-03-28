@@ -9,7 +9,7 @@ class Space {
   late String address;
   late String phone;
   late String mapUrl;
-  // late List photos;
+  late List photos;
   late int numberOfKitchens;
   late int numberOfBedrooms;
   late int numberOfCupboards;
@@ -25,10 +25,10 @@ class Space {
     required this.address,
     required this.phone,
     required this.mapUrl,
-    // required this.photos,
+    required this.photos,
     required this.numberOfKitchens,
     required this.numberOfBedrooms,
-    required this.numberOfCupboards
+    required this.numberOfCupboards,
   });
 
   Space.fromJson(json) {
@@ -42,10 +42,9 @@ class Space {
     address = json['address'];
     phone = json['phone'];
     mapUrl = json['map_url'];
+    photos = json['photos'];
     numberOfKitchens = json['number_of_kitchens'];
     numberOfBedrooms = json['number_of_bedrooms'];
     numberOfCupboards = json['number_of_cupboards'];
   }
-
-  
 }
