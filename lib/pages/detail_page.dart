@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_find_house/pages/error_page.dart';
 import 'package:flutter_find_house/themes.dart';
 import 'package:flutter_find_house/widgets/facility_item.dart';
+import 'package:flutter_find_house/widgets/rating_item.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../models/space.dart';
@@ -94,41 +95,17 @@ class DetailPage extends StatelessWidget {
                               ],
                             ),
                             Row(
-                              children: [
-                                Image.asset(
-                                  'assets/icon_star.png',
-                                  width: 20,
-                                ),
-                                SizedBox(
-                                  width: 2,
-                                ),
-                                Image.asset(
-                                  'assets/icon_star.png',
-                                  width: 20,
-                                ),
-                                SizedBox(
-                                  width: 2,
-                                ),
-                                Image.asset(
-                                  'assets/icon_star.png',
-                                  width: 20,
-                                ),
-                                SizedBox(
-                                  width: 2,
-                                ),
-                                Image.asset(
-                                  'assets/icon_star.png',
-                                  width: 20,
-                                ),
-                                SizedBox(
-                                  width: 2,
-                                ),
-                                Image.asset(
-                                  'assets/icon_star.png',
-                                  width: 20,
-                                  color: Color(0xff989BA1),
-                                ),
-                              ],
+                              children: [1, 2, 3, 4, 5].map((index) {
+                                return Container(
+                                  margin: EdgeInsets.only(
+                                    left: 2,
+                                  ),
+                                  child: RatingItem(
+                                    index: index,
+                                    rating: space.rating,
+                                  ),
+                                );
+                              }).toList(),
                             ),
                           ],
                         ),
@@ -181,7 +158,8 @@ class DetailPage extends StatelessWidget {
                               children: space.photos.map((item) {
                                 index++;
                                 return Container(
-                                  margin: EdgeInsets.only(left: index == 1 ? 0 : 24),
+                                  margin: EdgeInsets.only(
+                                      left: index == 1 ? 0 : 24),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(16),
                                     child: Image.network(
