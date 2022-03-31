@@ -14,7 +14,7 @@ class SplashPage extends StatelessWidget {
           children: [
             Align(
               alignment: Alignment.bottomCenter,
-              child: Image.asset('assets/image_splash.png'),
+              child: Image.asset('assets/image_splash_hd.png'),
             ),
             Padding(
               padding: const EdgeInsets.only(
