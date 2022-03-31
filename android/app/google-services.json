@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "50227311494",
+    "project_id": "flutter-find-house-baf2a",
+    "storage_bucket": "flutter-find-house-baf2a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50227311494:android:540ee694e62753ac3e7207",
+        "android_client_info": {
+          "package_name": "com.example.flutter_find_house"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "50227311494-5sn5g5ro77bq330fn4jo60tm09oh5or3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiLk5B3eF5bA2OPdJzJTzhYdMZ_sc1a14"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "50227311494-5sn5g5ro77bq330fn4jo60tm09oh5or3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50227311494:android:7008077fded0c0103e7207",
+        "android_client_info": {
+          "package_name": "com.zenai.crudfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "50227311494-5sn5g5ro77bq330fn4jo60tm09oh5or3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiLk5B3eF5bA2OPdJzJTzhYdMZ_sc1a14"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "50227311494-5sn5g5ro77bq330fn4jo60tm09oh5or3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
