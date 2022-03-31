@@ -7,10 +7,18 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../models/space.dart';
 
-class DetailPage extends StatelessWidget {
+class DetailPage extends StatefulWidget {
   final Space space;
 
-  DetailPage(this.space);
+  // ignore: prefer_const_constructors_in_immutables
+  DetailPage(this.space, {Key? key}) : super(key: key);
+
+  @override
+  State<DetailPage> createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> {
+  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +43,7 @@ class DetailPage extends StatelessWidget {
         child: Stack(
           children: [
             Image.network(
-              space.imageUrl,
+              widget.space.imageUrl,
               width: MediaQuery.of(context).size.width,
               height: 350,
               fit: BoxFit.cover,
@@ -68,7 +76,7 @@ class DetailPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  space.name,
+                                  widget.space.name,
                                   style: blackTextStyle.copyWith(
                                     fontSize: 22,
                                   ),
@@ -78,7 +86,7 @@ class DetailPage extends StatelessWidget {
                                 ),
                                 Text.rich(
                                   TextSpan(
-                                    text: '\$${space.price}',
+                                    text: '\$${widget.space.price}',
                                     style: purpleTextStyle.copyWith(
                                       fontSize: 16,
                                     ),
@@ -102,7 +110,7 @@ class DetailPage extends StatelessWidget {
                                   ),
                                   child: RatingItem(
                                     index: index,
-                                    rating: space.rating,
+                                    rating: widget.space.rating,
                                   ),
                                 );
                               }).toList(),
@@ -125,17 +133,17 @@ class DetailPage extends StatelessWidget {
                             FacilityItem(
                               imageUrl: 'assets/icon_kitchen.png',
                               name: 'Kitchen',
-                              total: space.numberOfKitchens,
+                              total: widget.space.numberOfKitchens,
                             ),
                             FacilityItem(
                               imageUrl: 'assets/icon_bedroom.png',
                               name: 'Bedroom',
-                              total: space.numberOfBedrooms,
+                              total: widget.space.numberOfBedrooms,
                             ),
                             FacilityItem(
                               imageUrl: 'assets/icon_cupboard.png',
                               name: 'Big Almari',
-                              total: space.numberOfCupboards,
+                              total: widget.space.numberOfCupboards,
                             ),
                           ],
                         ),
@@ -155,7 +163,7 @@ class DetailPage extends StatelessWidget {
                           height: 88,
                           child: ListView(
                               scrollDirection: Axis.horizontal,
-                              children: space.photos.map((item) {
+                              children: widget.space.photos.map((item) {
                                 index++;
                                 return Container(
                                   margin: EdgeInsets.only(
@@ -190,14 +198,14 @@ class DetailPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  space.address,
+                                  widget.space.address,
                                   style: regularTextStyle.copyWith(
                                     fontSize: 14,
                                     color: greyColor,
                                   ),
                                 ),
                                 Text(
-                                  space.city,
+                                  widget.space.city,
                                   style: regularTextStyle.copyWith(
                                     fontSize: 14,
                                     color: greyColor,
@@ -208,7 +216,7 @@ class DetailPage extends StatelessWidget {
                             InkWell(
                               onTap: () {
                                 // launchUrl('https://bit.ly/3Jz2vnt');
-                                launchUrl(space.mapUrl);
+                                launchUrl(widget.space.mapUrl);
                               },
                               child: Container(
                                 width: 40,
@@ -238,7 +246,7 @@ class DetailPage extends StatelessWidget {
                               primary: purpleColor,
                             ),
                             onPressed: () {
-                              launchUrl('tel:${space.phone}');
+                              launchUrl('tel:${widget.space.phone}');
                             },
                             child: Center(
                               child: Text(
@@ -274,10 +282,19 @@ class DetailPage extends StatelessWidget {
                       height: 40,
                     ),
                   ),
-                  Image.asset(
-                    'assets/button_wishlist.png',
-                    width: 40,
-                    height: 40,
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        isFavorite = !isFavorite;
+                      });
+                    },
+                    child: Image.asset(
+                      isFavorite
+                          ? 'assets/button_wishlist_filled.png'
+                          : 'assets/button_wishlist.png',
+                      width: 40,
+                      height: 40,
+                    ),
                   ),
                 ],
               ),
